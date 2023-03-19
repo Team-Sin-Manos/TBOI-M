@@ -1,6 +1,6 @@
 ----Welcome to the "main.lua" file! Here is where all the magic happens, everything from functions to callbacks are done here.
 --Startup
-local mod = RegisterMod("Commission Template - Character", 1)
+local mod = RegisterMod("Commission Template - Character + Tainted", 1)
 local game = Game()
 local rng = RNG()
 
@@ -30,6 +30,33 @@ mod.One = {
 		RANGE = 0.00
 	},
 }
+mod.Two = {
+	ID = Isaac.GetPlayerTypeByName("Two", true),
+	Costume_ID = Isaac.GetCostumeIdByPath("gfx/characters/Two-head.anm2"),
+	Stats = {
+		DAMAGE = 0.00,
+		FIREDELAY = 0.00,
+		SHOTSPEED = 0.00,
+		SPEED = 0.00,
+		TEARCOLOR = Color(255/255, 255/255, 255/255, 255/255, 0, 0, 0),
+		FLYING = false,
+		TEARFLAG = TearFlags.TEAR_NORMAL,
+		LUCK = 0.00,
+		RANGE = 0.00
+	},
+}
+
+function mod:playerSpawn(player) 
+    if player:GetName() == "One" then
+        player:AddNullCostume(mod.One.Costume_ID)
+		player:AddHearts(-4)
+    end
+    if player:GetName() == "Two" then
+        player:AddNullCostume(mod.Two.Costume_ID)
+		player:AddRottenHearts(player:GetMaxHearts())
+    end
+end
+mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, mod.playerSpawn)
 
 function mod:evalCache(player, cacheFlag)
 	if player:GetName() == "One" then
@@ -56,6 +83,32 @@ function mod:evalCache(player, cacheFlag)
 		end
 		if cacheFlag == CacheFlag.CACHE_TEARCOLOR then
 			player.TearColor = mod.One.Stats.TEARCOLOR
+		end
+	end
+	if player:GetName() == "Two" then
+		if cacheFlag == CacheFlag.CACHE_DAMAGE then
+			player.Damage = player.Damage + mod.Two.Stats.DAMAGE
+		end
+		if cacheFlag == CacheFlag.CACHE_FIREDELAY then
+			player.MaxFireDelay = math.max(1.0, fromTears(toTears(player.MaxFireDelay) + mod.Two.Stats.FIREDELAY))
+		end
+		if cacheFlag == CacheFlag.CACHE_SHOTSPEED then
+			player.ShotSpeed = player.ShotSpeed + mod.Two.Stats.SHOTSPEED
+		end
+		if cacheFlag == CacheFlag.CACHE_SPEED then
+			player.MoveSpeed = player.MoveSpeed + mod.Two.Stats.SPEED
+		end
+		if cacheFlag == CacheFlag.CACHE_LUCK then
+			player.Luck = player.Luck + mod.Two.Stats.LUCK
+		end
+		if cacheFlag == CacheFlag.CACHE_FLYING and mod.Two.Stats.FLYING then
+			player.CanFly = true
+		end
+		if cacheFlag == CacheFlag.CACHE_TEARFLAG then
+			player.TearFlags = player.TearFlags | mod.Two.Stats.TEARFLAG
+		end
+		if cacheFlag == CacheFlag.CACHE_TEARCOLOR then
+			player.TearColor = mod.Two.Stats.TEARCOLOR
 		end
 	end
 end
