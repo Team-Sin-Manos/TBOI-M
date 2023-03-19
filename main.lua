@@ -17,7 +17,7 @@ end
 
 mod.One = {
 	ID = Isaac.GetPlayerTypeByName("One"),
-	Costume_ID = Isaac.GetCostumeIdByPath("gfx/characters/one-head.anm2"),
+	Costume_ID = Isaac.GetCostumeIdByPath("gfx/characters/One-head.anm2"),
 	Stats = {
 		DAMAGE = 0.00,
 		FIREDELAY = 0.00,
@@ -49,11 +49,9 @@ mod.Two = {
 function mod:playerSpawn(player) 
     if player:GetName() == "One" then
         player:AddNullCostume(mod.One.Costume_ID)
-		player:AddHearts(-4)
     end
     if player:GetName() == "Two" then
         player:AddNullCostume(mod.Two.Costume_ID)
-		player:AddRottenHearts(player:GetMaxHearts())
     end
 end
 mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, mod.playerSpawn)
