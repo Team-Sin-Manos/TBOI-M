@@ -34,28 +34,28 @@ mod.One = {
 function mod:evalCache(player, cacheFlag)
 	if player:GetName() == "One" then
 		if cacheFlag == CacheFlag.CACHE_DAMAGE then
-			player.Damage = player.Damage + mod.Isek.Stats.DAMAGE
+			player.Damage = player.Damage + mod.One.Stats.DAMAGE
 		end
 		if cacheFlag == CacheFlag.CACHE_FIREDELAY then
-			player.MaxFireDelay = math.max(1.0, fromTears(toTears(player.MaxFireDelay) + mod.Isek.Stats.FIREDELAY))
+			player.MaxFireDelay = math.max(1.0, fromTears(toTears(player.MaxFireDelay) + mod.One.Stats.FIREDELAY))
 		end
 		if cacheFlag == CacheFlag.CACHE_SHOTSPEED then
-			player.ShotSpeed = player.ShotSpeed + mod.Isek.Stats.SHOTSPEED
+			player.ShotSpeed = player.ShotSpeed + mod.One.Stats.SHOTSPEED
 		end
 		if cacheFlag == CacheFlag.CACHE_SPEED then
-			player.MoveSpeed = player.MoveSpeed + mod.Isek.Stats.SPEED
+			player.MoveSpeed = player.MoveSpeed + mod.One.Stats.SPEED
 		end
 		if cacheFlag == CacheFlag.CACHE_LUCK then
-			player.Luck = player.Luck + mod.Isek.Stats.LUCK
+			player.Luck = player.Luck + mod.One.Stats.LUCK
 		end
-		if cacheFlag == CacheFlag.CACHE_FLYING and mod.Isek.Stats.FLYING then
+		if cacheFlag == CacheFlag.CACHE_FLYING and mod.One.Stats.FLYING then
 			player.CanFly = true
 		end
 		if cacheFlag == CacheFlag.CACHE_TEARFLAG then
-			player.TearFlags = player.TearFlags | mod.Isek.Stats.TEARFLAG
+			player.TearFlags = player.TearFlags | mod.One.Stats.TEARFLAG
 		end
 		if cacheFlag == CacheFlag.CACHE_TEARCOLOR then
-			player.TearColor = mod.Isek.Stats.TEARCOLOR
+			player.TearColor = mod.One.Stats.TEARCOLOR
 		end
 	end
 end
