@@ -39,8 +39,8 @@ local function characterStats(name, isTainted, speed, tears, damage, range, shot
 end
 --Character Stat Definitions
 ----------characterStats(NAME, isTainted, SPEED, FIREDELAY, DAMAGE, RANGE, SHOTSPEED, LUCK, TEARCOLOR, FLYING, TEARFLAG)
-mod.One_Stats = characterStats("One_Stats", false, 0, 0, 0, 0, 0, 0, Color(1,1,1,1,0,0,0), false, TearFlags.TEAR_NORMAL)
-mod.Two_Stats = characterStats("Two_Stats", true, 0, 0, 0, 0, 0, 0, Color(1,1,1,1,0,0,0), false, TearFlags.TEAR_NORMAL)
+mod.One_Stats = characterStats("One", false, 0, 0, 0, 0, 0, 0, Color(1,1,1,1,0,0,0), false, TearFlags.TEAR_NORMAL)
+mod.Two_Stats = characterStats("Two", true, 0, 0, 0, 0, 0, 0, Color(1,1,1,1,0,0,0), false, TearFlags.TEAR_NORMAL)
 
 --Stat Functions
 local function toTears(fireDelay) --thanks oat for the cool functions for calculating firerate!
