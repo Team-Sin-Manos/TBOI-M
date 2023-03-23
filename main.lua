@@ -1,12 +1,15 @@
-----Welcome to the "main.lua" file! Here is where all the magic happens, everything from functions to callbacks are done here.
+----Welcome to the "main.lua" file! Here is where all the magic happens, everything from functions to callbacks are done.
 --Startup
 local mod = RegisterMod("Commission Template - Character + Tainted", 1)
 local game = Game()
 local rng = RNG()
 
+include("ez-functions.lua")
 --local RECOMMENDED_SHIFT_IDX = 35
 --local seeds = game:GetSeeds()
 --local startSeed = seeds:GetStartSeed()
+
+mod.balls()
 
 local function toTears(fireDelay) --thanks oat for the cool functions for calculating firerate
 	return 30 / (fireDelay + 1)
