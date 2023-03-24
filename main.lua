@@ -6,22 +6,6 @@ local mod = RegisterMod("Commission Template - Character + Tainted", 1)
 local game = Game()
 local rng = RNG()
 
-local function Hexadecimal_alpha(hexa, alpha, offhexa)
-    hexa = hexa:gsub('%#', '')
-    R = tonumber("0x"..string.sub(hexa, 1, 2))/255
-    G = tonumber("0x"..string.sub(hexa, 3, 4))/255
-    B = tonumber("0x"..string.sub(hexa, 5, 6))/255
-
-    offhexa = offhexa:gsub('%#', '')
-    OffR = tonumber("0x"..string.sub(offhexa, 1, 2))/255
-    OffG = tonumber("0x"..string.sub(offhexa, 3, 4))/255
-    OffB = tonumber("0x"..string.sub(offhexa, 5, 6))/255
-
-    return Color(R,G,B,alpha, OffR,OffG,OffB)
-end
-
-local hexidecimal_example = Hexadecimal_alpha("#ffffff", 1.0, "#000000")
-
 ---@param name string
 ---@param isTainted boolean
 ---@param speed number
