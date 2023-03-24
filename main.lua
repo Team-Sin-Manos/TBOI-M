@@ -6,6 +6,37 @@ local mod = RegisterMod("Commission Template - Character + Tainted", 1)
 local game = Game()
 local rng = RNG()
 
+local function Hexadecimal_alpha(hexa, alpha)
+    hexa = hexa:gsub('%#', '')
+    R = string.sub(hexa, 1, 2)
+    G = string.sub(hexa, 3, 4)
+    B = string.sub(hexa, 5, 6)
+
+    return Color(tonumber("0x"..R)/255,tonumber("0x"..G)/255,tonumber("0x"..B)/255,alpha, 0,0,0)
+end
+
+local function Hexadecimal(hexa)
+    hexa = hexa:gsub('%#', '')
+    R = string.sub(hexa, 1, 2)
+    G = string.sub(hexa, 3, 4)
+    B = string.sub(hexa, 5, 6)
+
+    return Color(tonumber("0x"..R)/255,tonumber("0x"..G)/255,tonumber("0x"..B)/255, 1, 0,0,0)
+end
+
+local function RGB(r,g,b)
+    return Color(r/255,g/255,b/255, 1.0, 0,0,0)
+end
+
+local function RGBA(r,g,b,a)
+    return Color(r/255,g/255,b/255, a, 0, 0,0)
+end
+
+--Hexadecimal_alpha("#FF00BB", 1.0)
+--Hexadecimal("#FFFFFF")
+--RGB(255,255,255)
+--RGBA(255,255,255, 0.5)
+
 ---@param name string
 ---@param isTainted boolean
 ---@param speed number
@@ -39,8 +70,8 @@ local function characterStats(name, isTainted, speed, tears, damage, range, shot
 end
 --Character Stat Definitions
 ----------characterStats(NAME, isTainted, SPEED, FIREDELAY, DAMAGE, RANGE, SHOTSPEED, LUCK, TEARCOLOR, FLYING, TEARFLAG)
-mod.One_Stats = characterStats("One", false, 0, 0, 0, 0, 0, 0, Color(1,1,1,1,0,0,0), false, TearFlags.TEAR_NORMAL)
-mod.Two_Stats = characterStats("Two", true, 0, 0, 0, 0, 0, 0, Color(1,1,1,1,0,0,0), false, TearFlags.TEAR_NORMAL)
+mod.One_Stats = characterStats("One", false, 0, 0, 0, 0, 0, 0, Hexadecimal_alpha("#00838f", 1.0), false, TearFlags.TEAR_NORMAL)
+mod.Two_Stats = characterStats("Two", true, 0, 0, 0, 0, 0, 0, Hexadecimal_alpha("#00838f", 1.0), false, TearFlags.TEAR_NORMAL)
 
 --Stat Functions
 local function toTears(fireDelay) --thanks oat for the cool functions for calculating firerate!
