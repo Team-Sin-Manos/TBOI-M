@@ -22,11 +22,6 @@ end
 
 local hexidecimal_example = Hexadecimal_alpha("#ffffff", 1.0, "#000000")
 
---Hexadecimal_alpha("#FF00BB", 1.0)
---Hexadecimal("#FFFFFF")
---RGB(255,255,255)
---RGBA(255,255,255, 0.5)
-
 ---@param name string
 ---@param isTainted boolean
 ---@param speed number
