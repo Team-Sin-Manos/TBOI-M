@@ -254,7 +254,7 @@ function mod.oncmd(_, command, args)
 			persistentData.unlocks.One.THELAMB = true
 			persistentData.unlocks.One.BOSSRUSH = true
 			persistentData.unlocks.One.HUSH = true
-			persistentData.unlocks.One.DELIRUM = true
+			persistentData.unlocks.One.DELIRIUM = true
 			persistentData.unlocks.One.MEGASATAN = true
 			persistentData.unlocks.One.MOTHER = true
 			persistentData.unlocks.One.THEBEAST = true
@@ -275,7 +275,7 @@ function mod.oncmd(_, command, args)
 			persistentData.unlocks.Two.THELAMB = true
 			persistentData.unlocks.Two.BOSSRUSH = true
 			persistentData.unlocks.Two.HUSH = true
-			persistentData.unlocks.Two.DELIRUM = true
+			persistentData.unlocks.Two.DELIRIUM = true
 			persistentData.unlocks.Two.MEGASATAN = true
 			persistentData.unlocks.Two.MOTHER = true
 			persistentData.unlocks.Two.THEBEAST = true
@@ -297,7 +297,7 @@ function mod.oncmd(_, command, args)
 			persistentData.unlocks.One.THELAMB = false
 			persistentData.unlocks.One.BOSSRUSH = false
 			persistentData.unlocks.One.HUSH = false
-			persistentData.unlocks.One.DELIRUM = false
+			persistentData.unlocks.One.DELIRIUM = false
 			persistentData.unlocks.One.MEGASATAN = false
 			persistentData.unlocks.One.MOTHER = false
 			persistentData.unlocks.One.THEBEAST = false
@@ -318,7 +318,7 @@ function mod.oncmd(_, command, args)
 			persistentData.unlocks.Two.THELAMB = false
 			persistentData.unlocks.Two.BOSSRUSH = false
 			persistentData.unlocks.Two.HUSH = false
-			persistentData.unlocks.Two.DELIRUM = false
+			persistentData.unlocks.Two.DELIRIUM = false
 			persistentData.unlocks.Two.MEGASATAN = false
 			persistentData.unlocks.Two.MOTHER = false
 			persistentData.unlocks.Two.THEBEAST = false
