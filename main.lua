@@ -92,9 +92,35 @@ local persistentData = {
 	unlocks = {
 		One = {
 			MOM = false,
+			MOMSHEART = false,
+			ISAAC = false,
+			BLUEBABY = false,
+			SATAN = false,
+			THELAMB = false,
+			BOSSRUSH = false,
+			HUSH = false,
+			DELIRIUM = false,
+			MEGASATAN = false,
+			MOTHER = false,
+			THEBEAST = false,
+			ULTRAGREED = false,
+			ULTRAGREEDIER = false,
 		},
 		Two = {
 			MOM = false,
+			MOMSHEART = false,
+			ISAAC = false,
+			BLUEBABY = false,
+			SATAN = false,
+			THELAMB = false,
+			BOSSRUSH = false,
+			HUSH = false,
+			DELIRIUM = false,
+			MEGASATAN = false,
+			MOTHER = false,
+			THEBEAST = false,
+			ULTRAGREED = false,
+			ULTRAGREEDIER = false,
 		},
 	}
 }
@@ -106,12 +132,15 @@ end
 
 function mod:LOADsavedata()
 	if mod:HasData() then
-		local myTable = json.decode(mod:LoadData())
+		json.decode(mod:LoadData())
 	end
 end
 
 function mod:preGameExit()
-	mod:STOREsavedata()
+	if mod:HasData() == false then
+		local jsonString = json.encode(persistentData)
+		mod:SaveData(jsonString)
+	end
 end
 
 mod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, mod.preGameExit)
@@ -134,24 +163,30 @@ end
 
 --Debug Console
 function mod.oncmd(_, command, args)
-	if command == "unlocks" and args == mod.One_Character.NAME then
-		print(mod.One_Character.NAME.."'s UNLOCKS ARE AS FOLLOWS")
-	end
 	if command == "unlocks" and args == mod.Two_Character.NAME then
 		print(mod.Two_Character.NAME.."'s UNLOCKS ARE AS FOLLOWS")
 		if mod:HasData() then
+			mod:LOADsavedata()
+
 			print("MOM")
 			print(mod:GetSaveData().unlocks.Two.MOM)
+			print("MOM'S HEART")
+			print(mod:GetSaveData().unlocks.Two.MOMSHEART)
+			print("ISAAC")
+			print(mod:GetSaveData().unlocks.Two.ISAAC)
+			print("BLUE BABY")
+			print(mod:GetSaveData().unlocks.Two.BLUEBABY)
 		end
 	end
 	if command == "unlocks" and args == mod.Two_Character.NAME .. " unlock" then
 		print(mod.Two_Character.NAME.."'s UNLOCKS ARE ALL UNLOCKED")
 		if mod:HasData() then
 			persistentData.unlocks.Two.MOM = true
-			mod:STOREsavedata()
+			persistentData.unlocks.Two.MOMSHEART = true
+			persistentData.unlocks.Two.ISAAC = true
+			persistentData.unlocks.Two.BLUEBABY = true
 
-			print("MOM")
-			print(mod:GetSaveData().unlocks.Two.MOM)
+			mod:STOREsavedata()
 		end
 	end
 end
