@@ -125,31 +125,6 @@ local persistentData = {
 	}
 }
 
-function mod:STOREsavedata()
-	local jsonString = json.encode(persistentData)
-	mod:SaveData(jsonString)
-end
-
-function mod:LOADsavedata()
-	if mod:HasData() then
-		json.decode(mod:LoadData())
-	end
-end
-
-function mod:preGameExit()
-	if mod:HasData() == false then
-		local jsonString = json.encode(persistentData)
-		mod:SaveData(jsonString)
-	end
-end
-
-mod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, mod.preGameExit)
-
-function mod:OnGameStart(isSave)
-	mod:LOADsavedata()
-end
-mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, mod.OnGameStart)
-
 function mod:GetSaveData()
 	if not mod.persistentData then
 		if mod:HasData() then
@@ -161,8 +136,118 @@ function mod:GetSaveData()
 		return mod.persistentData
 end
 
+if mod:HasData() then
+	persistentData = {
+		unlocks = {
+			One = {
+				MOM = mod:GetSaveData().unlocks.One.MOM,
+				MOMSHEART = mod:GetSaveData().unlocks.One.MOMSHEART,
+				ISAAC = mod:GetSaveData().unlocks.One.ISAAC,
+				BLUEBABY = mod:GetSaveData().unlocks.One.BLUEBABY,
+				SATAN = mod:GetSaveData().unlocks.One.SATAN,
+				THELAMB = mod:GetSaveData().unlocks.One.THELAMB,
+				BOSSRUSH = mod:GetSaveData().unlocks.One.BOSSRUSH,
+				HUSH = mod:GetSaveData().unlocks.One.HUSH,
+				DELIRIUM = mod:GetSaveData().unlocks.One.DELIRIUM,
+				MEGASATAN = mod:GetSaveData().unlocks.One.MEGASATAN,
+				MOTHER = mod:GetSaveData().unlocks.One.MOTHER,
+				THEBEAST = mod:GetSaveData().unlocks.One.THEBEAST,
+				ULTRAGREED = mod:GetSaveData().unlocks.One.ULTRAGREED,
+				ULTRAGREEDIER = mod:GetSaveData().unlocks.One.ULTRAGREEDIER,
+			},
+			Two = {
+				MOM = mod:GetSaveData().unlocks.Two.MOM,
+				MOMSHEART = mod:GetSaveData().unlocks.Two.MOMSHEART,
+				ISAAC = mod:GetSaveData().unlocks.Two.ISAAC,
+				BLUEBABY = mod:GetSaveData().unlocks.Two.BLUEBABY,
+				SATAN = mod:GetSaveData().unlocks.Two.SATAN,
+				THELAMB = mod:GetSaveData().unlocks.Two.THELAMB,
+				BOSSRUSH = mod:GetSaveData().unlocks.Two.BOSSRUSH,
+				HUSH = mod:GetSaveData().unlocks.Two.HUSH,
+				DELIRIUM = mod:GetSaveData().unlocks.Two.DELIRIUM,
+				MEGASATAN = mod:GetSaveData().unlocks.Two.MEGASATAN,
+				MOTHER = mod:GetSaveData().unlocks.Two.MOTHER,
+				THEBEAST = mod:GetSaveData().unlocks.Two.THEBEAST,
+				ULTRAGREED = mod:GetSaveData().unlocks.Two.ULTRAGREED,
+				ULTRAGREEDIER = mod:GetSaveData().unlocks.Two.ULTRAGREEDIER,
+			},
+		}
+	}
+end
+
+function mod:STOREsavedata()
+	local jsonString = json.encode(persistentData)
+	mod:SaveData(jsonString)
+end
+
+function mod:LOADsavedata()
+	if mod:HasData() then
+		mod.persistentData = json.decode(mod:LoadData())
+	end
+end
+
+function mod:preGameExit()
+	local jsonString = json.encode(persistentData)
+	mod:SaveData(jsonString)
+end
+
+mod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, mod.preGameExit)
+
+function mod:OnGameStart(isSave)
+	mod:LOADsavedata()
+end
+mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, mod.OnGameStart)
+
 --Debug Console
 function mod.oncmd(_, command, args)
+	if command == "unlocks" and args == mod.One_Character.NAME then
+		print(mod.One_Character.NAME.."'s UNLOCKS ARE AS FOLLOWS")
+		if mod:HasData() then
+			mod:LOADsavedata()
+
+			print("MOM")
+			print(mod:GetSaveData().unlocks.One.MOM)
+			print("")
+			print("MOM'S HEART")
+			print(mod:GetSaveData().unlocks.One.MOMSHEART)
+			print("")
+			print("ISAAC")
+			print(mod:GetSaveData().unlocks.One.ISAAC)
+			print("")
+			print("BLUE BABY")
+			print(mod:GetSaveData().unlocks.One.BLUEBABY)
+			print("")
+			print("SATAN")
+			print(mod:GetSaveData().unlocks.One.SATAN)
+			print("")
+			print("THE LAMB")
+			print(mod:GetSaveData().unlocks.One.THELAMB)
+			print("")
+			print("BOSS RUSH")
+			print(mod:GetSaveData().unlocks.One.BOSSRUSH)
+			print("")
+			print("HUSH")
+			print(mod:GetSaveData().unlocks.One.HUSH)
+			print("")
+			print("DELIRIUM")
+			print(mod:GetSaveData().unlocks.One.DELIRIUM)
+			print("")
+			print("MEGA SATAN")
+			print(mod:GetSaveData().unlocks.One.MEGASATAN)
+			print("")
+			print("MOTHER")
+			print(mod:GetSaveData().unlocks.One.MOTHER)
+			print("")
+			print("THE BEAST")
+			print(mod:GetSaveData().unlocks.One.THEBEAST)
+			print("")
+			print("ULTRA GREED")
+			print(mod:GetSaveData().unlocks.One.ULTRAGREED)
+			print("")
+			print("ULTRA GREEDIER")
+			print(mod:GetSaveData().unlocks.One.ULTRAGREEDIER)
+		end
+	end
 	if command == "unlocks" and args == mod.Two_Character.NAME then
 		print(mod.Two_Character.NAME.."'s UNLOCKS ARE AS FOLLOWS")
 		if mod:HasData() then
@@ -185,9 +270,55 @@ function mod.oncmd(_, command, args)
 			print("")
 			print("THE LAMB")
 			print(mod:GetSaveData().unlocks.Two.THELAMB)
+			print("")
+			print("BOSS RUSH")
+			print(mod:GetSaveData().unlocks.Two.BOSSRUSH)
+			print("")
+			print("HUSH")
+			print(mod:GetSaveData().unlocks.Two.HUSH)
+			print("")
+			print("DELIRIUM")
+			print(mod:GetSaveData().unlocks.Two.DELIRIUM)
+			print("")
+			print("MEGA SATAN")
+			print(mod:GetSaveData().unlocks.Two.MEGASATAN)
+			print("")
+			print("MOTHER")
+			print(mod:GetSaveData().unlocks.Two.MOTHER)
+			print("")
+			print("THE BEAST")
+			print(mod:GetSaveData().unlocks.Two.THEBEAST)
+			print("")
+			print("ULTRA GREED")
+			print(mod:GetSaveData().unlocks.Two.ULTRAGREED)
+			print("")
+			print("ULTRA GREEDIER")
+			print(mod:GetSaveData().unlocks.Two.ULTRAGREEDIER)
 		end
 	end
-	if command == "unlocks" and args == mod.Two_Character.NAME .. " unlock" then
+	--auto unlock all
+	if command == "unlocks" and args == mod.One_Character.NAME .. " unlockall" then
+		print(mod.One_Character.NAME.."'s UNLOCKS ARE ALL UNLOCKED")
+		if mod:HasData() then
+			persistentData.unlocks.One.MOM = true
+			persistentData.unlocks.One.MOMSHEART = true
+			persistentData.unlocks.One.ISAAC = true
+			persistentData.unlocks.One.BLUEBABY = true
+			persistentData.unlocks.One.SATAN = true
+			persistentData.unlocks.One.THELAMB = true
+			persistentData.unlocks.One.BOSSRUSH = true
+			persistentData.unlocks.One.HUSH = true
+			persistentData.unlocks.One.DELIRUM = true
+			persistentData.unlocks.One.MEGASATAN = true
+			persistentData.unlocks.One.MOTHER = true
+			persistentData.unlocks.One.THEBEAST = true
+			persistentData.unlocks.One.ULTRAGREED = true
+			persistentData.unlocks.One.ULTRAGREEDIER = true
+
+			mod:STOREsavedata()
+		end
+	end
+	if command == "unlocks" and args == mod.Two_Character.NAME .. " unlockall" then
 		print(mod.Two_Character.NAME.."'s UNLOCKS ARE ALL UNLOCKED")
 		if mod:HasData() then
 			persistentData.unlocks.Two.MOM = true
@@ -196,6 +327,57 @@ function mod.oncmd(_, command, args)
 			persistentData.unlocks.Two.BLUEBABY = true
 			persistentData.unlocks.Two.SATAN = true
 			persistentData.unlocks.Two.THELAMB = true
+			persistentData.unlocks.Two.BOSSRUSH = true
+			persistentData.unlocks.Two.HUSH = true
+			persistentData.unlocks.Two.DELIRUM = true
+			persistentData.unlocks.Two.MEGASATAN = true
+			persistentData.unlocks.Two.MOTHER = true
+			persistentData.unlocks.Two.THEBEAST = true
+			persistentData.unlocks.Two.ULTRAGREED = true
+			persistentData.unlocks.Two.ULTRAGREEDIER = true
+
+			mod:STOREsavedata()
+		end
+	end
+	--auto relock all
+	if command == "unlocks" and args == mod.One_Character.NAME .. " lockall" then
+		print(mod.One_Character.NAME.."'s UNLOCKS ARE ALL UNLOCKED")
+		if mod:HasData() then
+			persistentData.unlocks.One.MOM = false
+			persistentData.unlocks.One.MOMSHEART = false
+			persistentData.unlocks.One.ISAAC = false
+			persistentData.unlocks.One.BLUEBABY = false
+			persistentData.unlocks.One.SATAN = false
+			persistentData.unlocks.One.THELAMB = false
+			persistentData.unlocks.One.BOSSRUSH = false
+			persistentData.unlocks.One.HUSH = false
+			persistentData.unlocks.One.DELIRUM = false
+			persistentData.unlocks.One.MEGASATAN = false
+			persistentData.unlocks.One.MOTHER = false
+			persistentData.unlocks.One.THEBEAST = false
+			persistentData.unlocks.One.ULTRAGREED = false
+			persistentData.unlocks.One.ULTRAGREEDIER = false
+
+			mod:STOREsavedata()
+		end
+	end
+	if command == "unlocks" and args == mod.Two_Character.NAME .. " unlockall" then
+		print(mod.Two_Character.NAME.."'s UNLOCKS ARE ALL UNLOCKED")
+		if mod:HasData() then
+			persistentData.unlocks.Two.MOM = false
+			persistentData.unlocks.Two.MOMSHEART = false
+			persistentData.unlocks.Two.ISAAC = false
+			persistentData.unlocks.Two.BLUEBABY = false
+			persistentData.unlocks.Two.SATAN = false
+			persistentData.unlocks.Two.THELAMB = false
+			persistentData.unlocks.Two.BOSSRUSH = false
+			persistentData.unlocks.Two.HUSH = false
+			persistentData.unlocks.Two.DELIRUM = false
+			persistentData.unlocks.Two.MEGASATAN = false
+			persistentData.unlocks.Two.MOTHER = false
+			persistentData.unlocks.Two.THEBEAST = false
+			persistentData.unlocks.Two.ULTRAGREED = false
+			persistentData.unlocks.Two.ULTRAGREEDIER = false
 
 			mod:STOREsavedata()
 		end
