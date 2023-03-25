@@ -6,6 +6,7 @@ local mod = RegisterMod("Commission Template - Character + Tainted", 1)
 local json = require("json")
 local game = Game()
 local rng = RNG()
+local room = 5
 
 --Stat Functions
 local function toTears(fireDelay) --thanks oat for the cool functions for calculating firerate!
