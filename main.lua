@@ -170,12 +170,21 @@ function mod.oncmd(_, command, args)
 
 			print("MOM")
 			print(mod:GetSaveData().unlocks.Two.MOM)
+			print("")
 			print("MOM'S HEART")
 			print(mod:GetSaveData().unlocks.Two.MOMSHEART)
+			print("")
 			print("ISAAC")
 			print(mod:GetSaveData().unlocks.Two.ISAAC)
+			print("")
 			print("BLUE BABY")
 			print(mod:GetSaveData().unlocks.Two.BLUEBABY)
+			print("")
+			print("SATAN")
+			print(mod:GetSaveData().unlocks.Two.SATAN)
+			print("")
+			print("THE LAMB")
+			print(mod:GetSaveData().unlocks.Two.THELAMB)
 		end
 	end
 	if command == "unlocks" and args == mod.Two_Character.NAME .. " unlock" then
@@ -185,6 +194,8 @@ function mod.oncmd(_, command, args)
 			persistentData.unlocks.Two.MOMSHEART = true
 			persistentData.unlocks.Two.ISAAC = true
 			persistentData.unlocks.Two.BLUEBABY = true
+			persistentData.unlocks.Two.SATAN = true
+			persistentData.unlocks.Two.THELAMB = true
 
 			mod:STOREsavedata()
 		end
