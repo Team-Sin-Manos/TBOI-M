@@ -4,7 +4,6 @@ local mod = RegisterMod("Commission Template - Character + Tainted", 1)
 local json = require("json")
 local game = Game()
 local rng = RNG()
-local room = 100
 
 --Stat Functions
 local function toTears(fireDelay) --thanks oat for the cool functions for calculating firerate!
@@ -86,6 +85,7 @@ function mod:playerSpawn(player)
 end
 mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, mod.playerSpawn)
 
+----Anything below this is for unlocks
 --Saving and Loading Data!
 local persistentData = {
 	unlocks = {
@@ -288,20 +288,13 @@ function mod.oncmd(_, command, args)
 	if command == "unlocks" and args == mod.One_Character.NAME .. " lockall" then
 		print(mod.One_Character.NAME.."'s UNLOCKS ARE ALL LOCKED")
 		if mod:HasData() then
-			persistentData.unlocks.One.MOM = false
-			persistentData.unlocks.One.MOMSHEART = false
-			persistentData.unlocks.One.ISAAC = false
-			persistentData.unlocks.One.BLUEBABY = false
-			persistentData.unlocks.One.SATAN = false
-			persistentData.unlocks.One.THELAMB = false
-			persistentData.unlocks.One.BOSSRUSH = false
-			persistentData.unlocks.One.HUSH = false
-			persistentData.unlocks.One.DELIRIUM = false
-			persistentData.unlocks.One.MEGASATAN = false
-			persistentData.unlocks.One.MOTHER = false
-			persistentData.unlocks.One.THEBEAST = false
-			persistentData.unlocks.One.ULTRAGREED = false
-			persistentData.unlocks.One.ULTRAGREEDIER = false
+			persistentData.unlocks.One.MOM = false persistentData.unlocks.One.MOMSHEART = false
+			persistentData.unlocks.One.ISAAC = false persistentData.unlocks.One.BLUEBABY = false
+			persistentData.unlocks.One.SATAN = false persistentData.unlocks.One.THELAMB = false
+			persistentData.unlocks.One.BOSSRUSH = false persistentData.unlocks.One.HUSH = false
+			persistentData.unlocks.One.DELIRIUM = false persistentData.unlocks.One.MEGASATAN = false
+			persistentData.unlocks.One.MOTHER = false persistentData.unlocks.One.THEBEAST = false
+			persistentData.unlocks.One.ULTRAGREED = false persistentData.unlocks.One.ULTRAGREEDIER = false
 
 			mod:STOREsavedata()
 		end
@@ -309,20 +302,13 @@ function mod.oncmd(_, command, args)
 	if command == "unlocks" and args == mod.Two_Character.NAME .. " lockall" then
 		print(mod.Two_Character.NAME.."'s UNLOCKS ARE ALL LOCKED")
 		if mod:HasData() then
-			persistentData.unlocks.Two.MOM = false
-			persistentData.unlocks.Two.MOMSHEART = false
-			persistentData.unlocks.Two.ISAAC = false
-			persistentData.unlocks.Two.BLUEBABY = false
-			persistentData.unlocks.Two.SATAN = false
-			persistentData.unlocks.Two.THELAMB = false
-			persistentData.unlocks.Two.BOSSRUSH = false
-			persistentData.unlocks.Two.HUSH = false
-			persistentData.unlocks.Two.DELIRIUM = false
-			persistentData.unlocks.Two.MEGASATAN = false
-			persistentData.unlocks.Two.MOTHER = false
-			persistentData.unlocks.Two.THEBEAST = false
-			persistentData.unlocks.Two.ULTRAGREED = false
-			persistentData.unlocks.Two.ULTRAGREEDIER = false
+			persistentData.unlocks.Two.MOM = false persistentData.unlocks.Two.MOMSHEART = false
+			persistentData.unlocks.Two.ISAAC = false persistentData.unlocks.Two.BLUEBABY = false
+			persistentData.unlocks.Two.SATAN = false persistentData.unlocks.Two.THELAMB = false
+			persistentData.unlocks.Two.BOSSRUSH = false persistentData.unlocks.Two.HUSH = false
+			persistentData.unlocks.Two.DELIRIUM = false persistentData.unlocks.Two.MEGASATAN = false
+			persistentData.unlocks.Two.MOTHER = false persistentData.unlocks.Two.THEBEAST = false
+			persistentData.unlocks.Two.ULTRAGREED = false persistentData.unlocks.Two.ULTRAGREEDIER = false
 
 			mod:STOREsavedata()
 		end
