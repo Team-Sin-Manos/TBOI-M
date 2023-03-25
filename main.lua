@@ -1,4 +1,3 @@
-
 --Startup
 ----Welcome to the "main.lua" file! Here is where all the magic happens, everything from functions to callbacks are dOne_Character.
 --Startup
