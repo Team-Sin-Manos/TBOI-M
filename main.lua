@@ -6,8 +6,6 @@ local mod = RegisterMod("Commission Template - Character + Tainted", 1)
 local game = Game()
 local rng = RNG()
 
-local test = 500
-
 ---@param name string
 ---@param isTainted boolean
 ---@return table
@@ -34,6 +32,7 @@ local function fromTears(tears)
 end
 
 function mod:evalCache(player, cacheFlag) -- this function applies all the stats the character gains/loses on a new run.
+	---@param name string
 	---@param speed number
 	---@param tears number
 	---@param damage number
