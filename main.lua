@@ -21,7 +21,6 @@ local function addCharacter(name, isTainted) -- This is the function used to det
 	local character = { -- these stats are added to Isaac's base stats.
 		NAME = name,
 		ID = Isaac.GetPlayerTypeByName(name, isTainted), -- string, boolean
-		Costume_ID = Isaac.GetCostumeIdByPath("gfx/characters/"..name.."-head.anm2"),
 	}
 	return character
 end
@@ -76,11 +75,11 @@ end
 mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE,mod.evalCache)
 
 function mod:playerSpawn(player)
-    if player:GetPlayerType(mod.One_Character.NAME) then
-        player:AddNullCostume(mod.One_Character.Costume_ID)
+    if player:GetName() == mod.One_Character.NAME then
+        player:AddNullCostume(Isaac.GetCostumeIdByPath("gfx/characters/One-head.anm2"))
     end
-    if player:GetPlayerType(mod.Two_Character.NAME) then
-        player:AddNullCostume(mod.Two_Character.Costume_ID)
+    if player:GetName() == mod.Two_Character.NAME then
+        player:AddNullCostume(Isaac.GetCostumeIdByPath("gfx/characters/Two-head.anm2"))
     end
 end
 mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, mod.playerSpawn)
