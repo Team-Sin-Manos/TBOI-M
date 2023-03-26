@@ -49,7 +49,7 @@ function mod:evalCache(player, cacheFlag) -- this function applies all the stats
 			if cacheFlag == CacheFlag.CACHE_DAMAGE then
 				player.Damage = player.Damage + damage
 			end
-			if cacheFlag == CacheFlag.CACHE_DAMAGE then
+			if cacheFlag == CacheFlag.CACHE_RANGE then
 				player.TearRange = player.TearRange + range * 40
 			end
 			if cacheFlag == CacheFlag.CACHE_SHOTSPEED then
